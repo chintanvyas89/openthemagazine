@@ -1,0 +1,75 @@
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageButton
+            android:id="@+id/openFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="Open Magazine"
+            android:src="@drawable/openfile" />
+
+        <TextView
+            android:id="@+id/tvOpenFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/openFile"
+            android:layout_below="@+id/openFile"
+            android:gravity="center"
+            android:text="Choose Magazine"
+            android:textSize="30dp" />
+
+        <ImageButton
+            android:id="@+id/subscribe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/openFile"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/openFile"
+            android:contentDescription="Subscrribe"
+            android:src="@drawable/subscribe" />
+
+        <TextView
+            android:id="@+id/tvSubscribe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvOpenFile"
+            android:layout_alignBottom="@+id/tvOpenFile"
+            android:layout_alignLeft="@+id/subscribe"
+            android:layout_alignRight="@+id/subscribe"
+            android:gravity="center"
+            android:text="Subscribe"
+            android:textSize="30dp" />
+
+        <ImageButton
+            android:id="@+id/ibLibrary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/subscribe"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/subscribe"
+            android:contentDescription="Subscrribe"
+            android:src="@drawable/library" />
+
+        <TextView
+            android:id="@+id/tvlibrary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ibLibrary"
+            android:layout_alignRight="@+id/ibLibrary"
+            android:layout_below="@+id/ibLibrary"
+            android:gravity="center"
+            android:text="Library"
+            android:textSize="30dp" />
+    </RelativeLayout>
+
+</HorizontalScrollView>
