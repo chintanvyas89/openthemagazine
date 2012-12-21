@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ChoosePDFActivity"
+            android:name="com.artifex.mupdf.ChoosePDFActivity"
             android:label="@string/picker_title" >
             <intent-filter>
                 <action android:name="android.intent.action.CHOOSEPDFACTIVITY" />
@@ -114,6 +114,24 @@
         <activity
             android:name="com.pdfviewer.openthemagazine.Subscription"
             android:label="@string/app_name" />
+        <activity
+            android:name="com.artifex.mupdf.ChooseMagazine"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.CHOOSEMAGAZINE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pdfviewer.openthemagazine.GridMagazinesActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.GRIDMAGAZINESACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

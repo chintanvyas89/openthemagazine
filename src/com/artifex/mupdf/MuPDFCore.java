@@ -27,7 +27,7 @@ public class MuPDFCore
 			int patchX, int patchY,
 			int patchW, int patchH);
 	public static native RectF[] searchPage(String text);
-	public static native int getPageLink(int page, float x, float y);
+	public static native String getPageLink(int page, float x, float y);
 	public static native LinkInfo [] getPageLinksInternal(int page);
 	public static native OutlineItem [] getOutlineInternal();
 	public static native boolean hasOutlineInternal();
@@ -87,7 +87,7 @@ public class MuPDFCore
 		drawPage(bitmap, pageW, pageH, patchX, patchY, patchW, patchH);
 	}
 
-	public synchronized int hitLinkPage(int page, float x, float y) {
+	public synchronized String hitLinkPage(int page, float x, float y) {
 		return getPageLink(page, x, y);
 	}
 

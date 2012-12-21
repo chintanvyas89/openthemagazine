@@ -89,7 +89,7 @@ public class MuPDFActivity extends Activity
 	private ImageButton  mCancelButton;
 	private ImageButton  mOutlineButton;
 	private ViewSwitcher mTopBarSwitcher;
-// XXX	private ImageButton  mLinkButton;
+	private ImageButton  mLinkButton;
 	private boolean      mTopBarIsSearch;
 	private ImageButton  mSearchBack;
 	private ImageButton  mSearchFwd;
@@ -170,7 +170,14 @@ public class MuPDFActivity extends Activity
 			alert.show();
 			return;
 		}
-
+		
+//		OutlineItem outline[] = core.getOutline();
+//		if (outline != null) {
+//			OutlineActivityData.get().items = outline;
+//			Intent intent = new Intent(MuPDFActivity.this, OutlineActivity.class);
+//			startActivityForResult(intent, 0);
+//		}
+		
 		createUI(savedInstanceState);
 	}
 
@@ -221,7 +228,13 @@ public class MuPDFActivity extends Activity
 					if (mLinkState != LinkState.INHIBIT) {
 						MuPDFPageView pageView = (MuPDFPageView) mDocView.getDisplayedView();
 						if (pageView != null) {
-// XXX							linkPage = pageView.hitLinkPage(e.getX(), e.getY());
+							String chk = pageView.hitLinkPage(e.getX(), e.getY());
+							if(chk != null){
+								linkPage = Integer.parseInt(chk);
+							}
+							else{
+								linkPage = -1;
+							}
 						}
 					}
 
@@ -391,7 +404,7 @@ public class MuPDFActivity extends Activity
 			}
 		});
 
-/* XXX
+
 		mLinkButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				switch(mLinkState) {
@@ -414,7 +427,6 @@ public class MuPDFActivity extends Activity
 				}
 			}
 		});
-*/
 
 		if (core.hasOutline()) {
 			mOutlineButton.setOnClickListener(new View.OnClickListener() {
@@ -622,7 +634,7 @@ public class MuPDFActivity extends Activity
 		mSearchBack = (ImageButton)mButtonsView.findViewById(R.id.searchBack);
 		mSearchFwd = (ImageButton)mButtonsView.findViewById(R.id.searchForward);
 		mSearchText = (EditText)mButtonsView.findViewById(R.id.searchText);
-// XXX		mLinkButton = (ImageButton)mButtonsView.findViewById(R.id.linkButton);
+		mLinkButton = (ImageButton)mButtonsView.findViewById(R.id.linkButton);
 		mTopBarSwitcher.setVisibility(View.INVISIBLE);
 		mPageNumberView.setVisibility(View.INVISIBLE);
 		mPageSlider.setVisibility(View.INVISIBLE);

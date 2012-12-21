@@ -12,7 +12,7 @@ public class MuPDFPageView extends PageView {
 		mCore = core;
 	}
 
-	public int hitLinkPage(float x, float y) {
+	public String hitLinkPage(float x, float y) {
 		// Since link highlighting was implemented, the super class
 		// PageView has had sufficient information to be able to
 		// perform this method directly. Making that change would

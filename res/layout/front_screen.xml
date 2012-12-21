@@ -2,10 +2,10 @@
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-
+
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+        android:layout_width="1236dp"
         android:layout_height="fill_parent" >
 
         <ImageButton
@@ -70,6 +70,49 @@
             android:gravity="center"
             android:text="Library"
             android:textSize="30dp" />
+
+        <ImageButton
+            android:id="@+id/ibList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ibLibrary"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ibLibrary"
+            android:contentDescription="Listview"
+            android:src="@drawable/darkdenim3" />
+
+        <TextView
+            android:id="@+id/tvlistview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ibList"
+            android:layout_alignRight="@+id/ibList"
+            android:layout_alignTop="@+id/tvlibrary"
+            android:gravity="center"
+            android:text="Listview"
+            android:textSize="30dp" />
+
+        <ImageButton
+            android:id="@+id/ibGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/tvSubscribe"
+            android:layout_below="@+id/tvOpenFile"
+            android:layout_marginRight="74dp"
+            android:layout_marginTop="93dp"
+            android:src="@drawable/library" />
+
+        <TextView
+            android:id="@+id/tvGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ibGrid"
+            android:layout_alignRight="@+id/ibGrid"
+            android:layout_below="@+id/ibGrid"
+            android:gravity="center"
+            android:text="Grid View"
+            android:textSize="30dp" />
+
     </RelativeLayout>
 
 </HorizontalScrollView>

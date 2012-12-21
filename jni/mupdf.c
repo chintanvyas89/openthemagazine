@@ -614,7 +614,7 @@ Java_com_artifex_mupdf_MuPDFCore_getPageLinksInternal(JNIEnv * env, jobject thiz
 	return arr;
 }
 
-JNIEXPORT int JNICALL
+JNIEXPORT jstring JNICALL
 Java_com_artifex_mupdf_MuPDFCore_getPageLink(JNIEnv * env, jobject thiz, int pageNumber, float x, float y)
 {
 	fz_matrix ctm;
@@ -623,8 +623,10 @@ Java_com_artifex_mupdf_MuPDFCore_getPageLink(JNIEnv * env, jobject thiz, int pag
 	fz_point p;
 
 	Java_com_artifex_mupdf_MuPDFCore_gotoPageInternal(env, thiz, pageNumber);
-	if (currentPageNumber == -1 || currentPage == NULL)
-		return -1;
+	if (currentPageNumber == -1 || currentPage == NULL) {
+		return (*env)->NewGlobalRef(env, NULL);
+	//	return -1;
+	}
 
 	p.x = x;
 	p.y = y;
@@ -645,15 +647,27 @@ Java_com_artifex_mupdf_MuPDFCore_getPageLink(JNIEnv * env, jobject thiz, int pag
 				break;
 	}
 
-	if (link == NULL)
-		return -1;
+	if (link == NULL) {
+		return (*env)->NewGlobalRef(env, NULL);
+	//	return -1;
+	}
+
+	LOGI("Link Type %d\n", link->dest.kind);
 
 	if (link->dest.kind == FZ_LINK_URI)
 	{
+		LOGI("Link Value %s\n", link->dest.ld.uri.uri);
 		//gotouri(link->dest.ld.uri.uri);
-		return -1;
+		return (*env)->NewStringUTF(env, link->dest.ld.uri.uri);
+//		return -1;
 	}
-	else if (link->dest.kind == FZ_LINK_GOTO)
-		return link->dest.ld.gotor.page;
-	return -1;
+	else if (link->dest.kind == FZ_LINK_GOTO) {
+		char buffer [33];
+		sprintf(buffer, "%d", link->dest.ld.gotor.page);
+		return (*env)->NewStringUTF(env, buffer);
+//		return link->dest.ld.gotor.page;
+//		return (*env)->NewGlobalRef(env, NULL);
+	}
+	return (*env)->NewGlobalRef(env, NULL);
+	//return -1;
 }

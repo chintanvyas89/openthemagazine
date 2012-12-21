@@ -68,6 +68,7 @@ public class ChoosePDFActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
+		System.out.println("cbv" + mFiles[position].getAbsolutePath());
 		Uri uri = Uri.parse(mFiles[position].getAbsolutePath());
 		Intent intent = new Intent(this,MuPDFActivity.class);
 		intent.setAction(Intent.ACTION_VIEW);

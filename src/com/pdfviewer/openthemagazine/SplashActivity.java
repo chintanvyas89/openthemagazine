@@ -1,7 +1,6 @@
 package com.pdfviewer.openthemagazine;
 
 import com.artifex.mupdf.R;
-import com.artifex.mupdf.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +15,7 @@ public class SplashActivity extends Activity {
         Thread start_splash = new Thread(){
         	public void run(){
         		try{
-        			sleep(4000);
+        			sleep(1000);
         			finish();
         		}
         		catch(InterruptedException e){
