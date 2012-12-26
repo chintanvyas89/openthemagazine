@@ -44,7 +44,8 @@ public class ChoosePDFActivity extends ListActivity {
 			return;
 		}
 
-		mDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+		//mDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+		mDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/com.pdfviewer.openthemagazine/files");
 		mFiles = mDirectory.listFiles(new FilenameFilter() {
 			public boolean accept(File file, String name) {
 				if (name.toLowerCase().endsWith(".pdf"))
