@@ -1,17 +1,24 @@
 package com.pdfviewer.openthemagazine;
 
+import java.io.File;
+
 import com.artifex.mupdf.R;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 
 public class SplashActivity extends Activity {
-
+	Boolean b;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+        File appDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/com.pdfviewer.openthemagazine/files");
+		if(!appDir.isDirectory()){
+			appDir.mkdirs();
+		}
         Thread start_splash = new Thread(){
         	public void run(){
         		try{

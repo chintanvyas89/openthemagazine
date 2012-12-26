@@ -2,7 +2,6 @@ package com.pdfviewer.openthemagazine;
 
 import java.io.File;
 
-import com.artifex.mupdf.ChooseMagazine;
 import com.artifex.mupdf.MuPDFActivity;
 import com.artifex.mupdf.R;
 
@@ -33,7 +32,9 @@ public class FrontScreen extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		String pathName = "/mnt/sdcard/Download/toc-cover-winter-travel.jpg";
 		Bitmap bmp = BitmapFactory.decodeFile(pathName);
-		ibOpenFile.setImageBitmap(bmp);
+		if(bmp != null){
+			ibOpenFile.setImageBitmap(bmp);
+		}
 	}
 
 	private void initialize() {
