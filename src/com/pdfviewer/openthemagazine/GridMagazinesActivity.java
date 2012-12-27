@@ -54,7 +54,9 @@ public class GridMagazinesActivity extends Footer {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		// Get the list of pdf 
 		getFilenames();
+		// check the file folder is empty or not. 
 		if(list.isEmpty())	
 		{
 			AlertDialog alertDialog = new AlertDialog.Builder(
