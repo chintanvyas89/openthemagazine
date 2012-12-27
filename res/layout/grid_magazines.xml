@@ -12,13 +12,38 @@
         android:contentDescription="Grid Image" >
     </ImageView>
 
-    <TextView
-        android:id="@+id/grid_item_label"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@+id/label"
-        android:textSize="30dp" >
-    </TextView>
+        android:orientation="vertical"
+        android:padding="5dp" >
+
+        <Button
+            android:id="@+id/bPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preview"
+            android:textColor="#FFFFFF" >
+        </Button>
+
+        <Button
+            android:id="@+id/bBuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.99 Buy"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp" >
+        </Button>
+
+        <TextView
+            android:id="@+id/grid_item_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@+id/label"
+            android:textSize="30dp" >
+        </TextView>
+    </LinearLayout>
 
 </LinearLayout>

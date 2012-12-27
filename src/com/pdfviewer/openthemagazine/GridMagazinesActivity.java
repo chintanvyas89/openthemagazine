@@ -5,19 +5,19 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.artifex.mupdf.R;
 
-public class GridMagazinesActivity extends Activity {
+public class GridMagazinesActivity extends Footer {
 	GridView gridView;
 
 //	static final String[] PDFS = new String[] { "Android", "iOS", "Windows",
@@ -56,7 +56,9 @@ public class GridMagazinesActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		getFilenames();
 		final String[] PDFS = (String[]) list.toArray(new String[list.size()]);
-		setContentView(R.layout.grid_main);
+		ViewGroup vg = (ViewGroup) findViewById(R.id.lldata);
+        ViewGroup.inflate(GridMagazinesActivity.this, R.layout.grid_main, vg);
+		//setContentView(R.layout.grid_main);
 		gridView = (GridView) findViewById(R.id.grid_main);
 
 		gridView.setAdapter(new ImageAdapter(this, PDFS));

@@ -11,7 +11,7 @@
         android:smallScreens="true" />
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="11" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,11 +20,12 @@
     <application
         android:debuggable="true"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/icon_small"
         android:label="@string/app_name" >
         <activity
             android:name="com.pdfviewer.openthemagazine.SplashActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -114,7 +115,8 @@
         </activity>
         <activity
             android:name="com.pdfviewer.openthemagazine.Subscription"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name="com.artifex.mupdf.ChooseMagazine"
             android:label="@string/app_name" >
@@ -126,9 +128,20 @@
         </activity>
         <activity
             android:name="com.pdfviewer.openthemagazine.GridMagazinesActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.GRIDMAGAZINESACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pdfviewer.openthemagazine.SigninDialog"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Dialog" >
+            <intent-filter>
+                <action android:name="android.intent.action.SIGNINDIALOG" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
