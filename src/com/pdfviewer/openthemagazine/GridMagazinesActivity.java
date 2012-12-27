@@ -5,6 +5,8 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -52,9 +54,28 @@ public class GridMagazinesActivity extends Footer {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-
-		super.onCreate(savedInstanceState);
+		// Get the list of pdf 
 		getFilenames();
+		// check the file folder is empty or not. 
+		if(list.isEmpty())	
+		{
+			AlertDialog alertDialog = new AlertDialog.Builder(
+                    GridMagazinesActivity.this).create();
+			
+			// Setting Dialog Message
+			alertDialog.setMessage("There are no magazines found");
+			
+		    // Setting OK Button
+		    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+               finish();
+            }
+            });
+
+		    // Showing Alert Message
+		    alertDialog.show();
+		}
+		super.onCreate(savedInstanceState);
 		final String[] PDFS = (String[]) list.toArray(new String[list.size()]);
 		ViewGroup vg = (ViewGroup) findViewById(R.id.lldata);
         ViewGroup.inflate(GridMagazinesActivity.this, R.layout.grid_main, vg);
