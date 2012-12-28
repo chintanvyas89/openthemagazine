@@ -1,5 +1,8 @@
 package com.pdfviewer.openthemagazine;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +19,7 @@ public class SigninDialog extends Activity implements OnClickListener{
 	Button bSignin, bCancel;
 	ImageButton close_signin_dialog;
 	EditText etuname, etpass;
+	WebServiceCall wsCall;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -48,6 +52,32 @@ public class SigninDialog extends Activity implements OnClickListener{
 		int cust = v.getId();
 		if (cust == bSignin.getId()) {
 			Toast.makeText(getApplicationContext(),"Sign in Button clicked", Toast.LENGTH_SHORT).show();
+			String data = "";
+			try {
+				data = URLEncoder.encode("method", "UTF-8")+"="+URLEncoder.encode("user.login", "UTF-8");
+				data += "&" + URLEncoder.encode("username", "UTF-8")+"="+URLEncoder.encode("arijit_at_open" , "UTF-8");
+				data += "&" + URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode("arijit_at_open" , "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+//			data += "&" + URLEncoder.encode("sessid", "UTF-8")+"="+URLEncoder.encode(getSessionId(context) , "UTF-8");
+			try {
+				wsCall = new WebServiceCall(data);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Exception");
+				e.printStackTrace();
+			}
+			
+			System.out.println("Calling web service");
+			boolean threadStatus = wsCall.isThreadSucceeded();
+			if (threadStatus) {
+				Toast.makeText(getApplicationContext(),"Thread succeed", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				System.out.println("WS failed");
+			}
 		}
 		if (cust == bCancel.getId()) {
 			Toast.makeText(getApplicationContext(),"Cancel Button clicked", Toast.LENGTH_SHORT).show();
