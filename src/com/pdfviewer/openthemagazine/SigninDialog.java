@@ -3,6 +3,8 @@ package com.pdfviewer.openthemagazine;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.artifex.mupdf.R;
+import com.pdfviewer.openthemagazine.WebServiceCall;
 
 public class SigninDialog extends Activity implements OnClickListener{
 	Button bSignin, bCancel;
@@ -77,6 +80,11 @@ public class SigninDialog extends Activity implements OnClickListener{
 			}
 			else{
 				System.out.println("WS failed");
+				JSONObject jobj = wsCall.getExecutionResponse();
+				if(jobj != null){
+					String err = jobj.toString();
+					System.out.println(err);					
+				}
 			}
 		}
 		if (cust == bCancel.getId()) {
